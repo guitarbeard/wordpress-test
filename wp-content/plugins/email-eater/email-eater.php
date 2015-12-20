@@ -14,12 +14,16 @@ wp_localize_script('email-eater-ajax', 'email_eater_ajax', array('ajaxurl' => ad
 // THE AJAX ADD ACTIONS
 add_action( 'wp_ajax_the_ajax_hook', 'the_action_function' );
 add_action( 'wp_ajax_nopriv_the_ajax_hook', 'the_action_function' );
-// THE FUNCTION
+
+function isValidEmail($email) {
+  return preg_match('/^.+@{1}.+\.{1}.+$/', $email);
+}
+
 function the_action_function(){
- $email = $_POST['email'];
+ $email = trim($_POST['email']);
  $success = true;
  try {
-      if (!$success) {
+      if (!isValidEmail($email)) {
           throw new Exception('email not valid', 500);
       }
       echo json_encode(array(
