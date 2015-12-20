@@ -1,0 +1,20 @@
+#emailEaterForm #emailInput {
+  width: calc(100% - 112px);
+  display: inline-block;
+}
+
+#emailEaterForm #submitEmailButton {
+  display: inline-block;
+}
+
+#emailEaterMessage {
+  color: #4CAF50;
+}
+
+#emailEaterMessage.error {
+  color: #E91E63;
+}
+
+.hidden {
+  display: none;
+}
